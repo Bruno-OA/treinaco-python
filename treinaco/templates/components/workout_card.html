@@ -1,0 +1,29 @@
+<a class="workout-card"
+   href="/treino/{{ treino.id }}"
+   data-home-workout="{{ treino.id }}"
+   data-total-series="{{ treino.exercicios | sum(attribute='series') }}">
+  <div class="card-art art-{{ treino.id }}">
+    <img
+      src="/assets/images/treino-{{ treino.id }}.png"
+      alt="Capa do Treino {{ treino.id | upper }} — {{ treino.titulo }}"
+      width="1122"
+      height="1402"
+      loading="lazy"
+      decoding="async">
+  </div>
+
+  <div class="card-body">
+    <div class="card-meta">
+      <span>TREINO {{ treino.numero }}</span>
+      <span class="card-meta-status" data-card-progress="{{ treino.id }}">0% FEITO</span>
+    </div>
+    <h3>Treino {{ treino.id | upper }}</h3>
+    <p>{{ treino.titulo }}</p>
+    <div class="card-line"></div>
+    <div class="card-detail">
+      <span>{{ treino.exercicios | length }} EXERCÍCIOS</span>
+      <span>{{ treino.duracao }}</span>
+    </div>
+    <span class="card-cta">ABRIR TREINO <span aria-hidden="true">↗</span></span>
+  </div>
+</a>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero container">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="pixel-square"></span> SEU NOVO MODO DE TREINAR <span class="eyebrow-line"></span></div>
+    <h1>SEU TREINO.<br><span class="blue-text">SEU RITMO.</span><br><span class="outline-text"></span></h1>
+    <p class="hero-description">Uma rotina simples, com movimentos guiados e cada série contando para a sua evolução. Escolha o Treino.</p>
+    <div class="hero-actions"><a href="#treinos" class="pixel-button pixel-button-primary">ESCOLHER MEU TREINO <span aria-hidden="true">↗</span></a><span class="hero-footnote">↓ ROLE PARA EXPLORAR</span></div>
+    <div class="hero-stats">
+      <div><strong>03</strong><small>TREINOS ABC</small></div>
+      <div><strong>~50<span>m</span></strong><small>POR SESSÃO</small></div>
+      <div><strong>100<span>%</span></strong><small>NO SEU RITMO</small></div>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-visual-top"><span>◼ TREINAÇO BB</span></div>
+    <div class="hero-grid"></div>
+    <img class="hero-avatar" src="/assets/images/hero-athlete.png" alt="">
+    <div class="hero-inset"><span>Thauany</span><strong><span></span></strong><div class="hero-inset-meter"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    <span class="float-star float-star-a">✦</span><span class="float-star float-star-b">✦</span><span class="float-spark">++</span>
+    <div class="hero-visual-bottom"><span>PRESS START TO MOVE</span><span>♥ ♥ ♥</span></div>
+  </div>
+</section>
+<section class="marquee-strip" aria-label="Motivação"><div class="marquee-inner">MOVE YOUR BODY <span>✦</span> KEEP YOUR PACE <span>✦</span> STRONGER EACH REP <span>✦</span> MOVE YOUR BODY <span>✦</span> KEEP YOUR PACE <span>✦</span> STRONGER EACH REP <span>✦</span></div></section>
+<section class="section container workout-section" id="treinos">
+  <div class="section-kicker"><span class="pixel-square"></span> SELEÇÃO DE TREINO / 01</div>
+  <div class="section-heading"><div><h2>ESCOLHA SEU <span class="blue-text">TREINO<span class="blink-cursor">_</span></span></h2><p>Três treinos pensados para alternar o foco muscular e deixar tudo fácil de acompanhar.</p></div><span class="phase-label">03 TREINOS DISPONÍVEIS <span>↙</span></span></div>
+  <div class="workout-grid">
+    {% for treino in treinos %}{% include 'components/workout_card.html' %}{% endfor %}
+  </div>
+</section>
+<section class="section container info-section">
+  <div class="info-panel"><div class="section-kicker">// MANUAL DO TREINO</div><h2>COMO <span class="blue-text">FUNCIONA?</span></h2><div class="how-grid"><div class="how-item"><span class="how-number">01</span><h3>ESCOLHA</h3><p>Abra o treino A, B ou C para ver a lista de movimentos.</p></div><div class="how-item"><span class="how-number">02</span><h3>EXECUTE</h3><p>Confira dicas, cadência, repetições e animações ilustrativas.</p></div><div class="how-item"><span class="how-number">03</span><h3>EVOLUA</h3><p>Marque séries, registre cargas e faça suas pausas.</p></div></div></div>
+</section>
+<div class="container disclaimer"><span class="disclaimer-icon">!</span> DICA DO APP: o progresso fica salvo neste navegador. Aqueça-se, respeite seus limites e peça orientação presencial se sentir dor ou tiver restrições.</div>
+{% endblock %}

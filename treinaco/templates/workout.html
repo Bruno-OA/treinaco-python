@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %}Treino {{ treino.id|upper }} — {{ treino.titulo }} | BLUE REP{% endblock %}
+{% block content %}
+<div class="container workout-page" data-workout-id="{{ treino.id }}">
+  <div class="breadcrumb">
+    <a href="/">← VOLTAR À BASE</a>
+    <span>/</span> TREINO {{ treino.id|upper }}
+  </div>
+
+  <section class="workout-hero">
+    <div class="workout-hero-copy">
+      <div class="eyebrow"><span class="pixel-square"></span> TREINO {{ treino.numero }} / DIVISÃO {{ treino.id|upper }}</div>
+      <h1>TREINO <span class="blue-text">{{ treino.id|upper }}</span><span class="blink-cursor">_</span></h1>
+      <h2>{{ treino.titulo }}</h2>
+      <p>{{ treino.subtitulo }}</p>
+      <div class="workout-tags">
+        <span>◷ {{ treino.duracao }}</span>
+        <span>◈ {{ treino.exercicios|length }} EXERCÍCIOS</span>
+        <span>✦ EXTRA: {{ treino.estimulo|upper }}</span>
+      </div>
+    </div>
+    <div class="workout-hero-art">
+      <img
+        src="/assets/images/treino-{{ treino.id }}.png"
+        alt="Capa fotográfica do Treino {{ treino.id|upper }} — {{ treino.titulo }}"
+        width="1122"
+        height="1402"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async">
+    </div>
+  </section>
+
+  <nav class="workout-tabs" aria-label="Alternar treino">
+    {% for outro in treinos %}
+      <a href="/treino/{{ outro.id }}"
+         class="{% if outro.id == treino.id %}active{% endif %}"
+         {% if outro.id == treino.id %}aria-current="page"{% endif %}>TREINO {{ outro.id | upper }}</a>
+    {% endfor %}
+  </nav>
+
+  <section class="progress-board" aria-label="Progresso do treino">
+    <div>
+      <span class="section-kicker">// STATUS DO TREINO</span>
+      <h2>Seu progresso</h2>
+      <p>Marque as séries abaixo. Seus registros ficam salvos no aparelho.</p>
+    </div>
+    <div class="progress-values">
+      <strong id="done-count">0</strong>
+      <span>/ {{ treino.exercicios | sum(attribute='series') }} SÉRIES</span>
+      <div class="progress-track"><i id="progress-fill"></i></div>
+    </div>
+    <button class="reset-link" id="reset-workout" type="button">REINICIAR MARCAÇÕES ↺</button>
+  </section>
+
+  <div class="exercise-section-heading">
+    <div>
+      <div class="section-kicker"><span class="pixel-square"></span> LISTA DE MISSÕES</div>
+      <h2>HORA DE <span class="blue-text">TREINAR.</span></h2>
+    </div>
+    <div class="heading-hint">TOQUE PARA VER DETALHES <span>↓</span></div>
+  </div>
+  <div class="exercise-list">
+    {% for exercicio in treino.exercicios %}
+      {% set indice = loop.index %}
+      {% set primeiro = loop.first %}
+      {% include 'components/exercise_card.html' %}
+    {% endfor %}
+  </div>
+
+  <div class="session-end">
+    <div class="session-end-icon">★</div>
+    <div>
+      <h2>UMA REP DE CADA VEZ.</h2>
+      <p>A qualidade do movimento vale mais do que correr para terminar. Bom treino!</p>
+    </div>
+    <a class="pixel-button pixel-button-outline" href="/#treinos">VER OUTROS TREINOS ↗</a>
+  </div>
+</div>
+
+<div class="rest-timer" id="rest-timer" role="status" aria-label="Cronômetro de descanso" hidden>
+  <div class="timer-inner">
+    <div class="timer-label">
+      <span class="timer-ping"></span>
+      <div><small>DESCANSO ATIVO</small><span id="timer-exercise-name">RECUPERE O FÔLEGO</span></div>
+    </div>
+    <strong id="timer-display" aria-live="off">01:30</strong>
+    <div class="timer-actions">
+      <button type="button" id="timer-toggle" aria-label="Pausar cronômetro">PAUSAR</button>
+      <button type="button" id="timer-close" aria-label="Encerrar cronômetro">PULAR ✕</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

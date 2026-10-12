@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1224">
+  <meta name="description" content="BLUE REP — treinos ABC, dicas de execução e acompanhamento de séries com um toque pixel art.">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <script src="/assets/scripts/app.js" defer></script>
+  <title>{% block title %}TREINAÇO BB | Sua rotina de treino{% endblock %}</title>
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="/" aria-label="BLUE REP — página inicial">
+        <span class="brand-icon" aria-hidden="true"><span>+</span></span>
+        <span>TREINAÇO<span class="brand-bright"> BB</span><span class="brand-dot">_</span></span>
+      </a>
+      <nav class="top-nav" aria-label="Menu principal">
+        <a href="/">INÍCIO</a>
+        <a href="/#treinos">MEUS TREINOS</a>
+      </nav>
+      <span class="header-online"><span class="online-dot"></span> Thauany</span>
+    </div>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span class="footer-brand">VAMBORA <span class="muted">// KEEP MOVING BABY</span></span>
+      <span>Feito para te dar um UP <span aria-hidden="true">✦</span></span>
+    </div>
+  </footer>
+</body>
+</html>
